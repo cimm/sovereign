@@ -1,0 +1,19 @@
+ServerSignature Off
+ServerTokens Prod
+
+<VirtualHost *:80>
+	ServerName nimbly.be
+	Redirect temp / https://www.nimbly.be/
+</VirtualHost>
+
+<VirtualHost *:80>
+	ServerName www.nimbly.be
+	Redirect temp / https://www.nimbly.be/
+</VirtualHost>
+
+<VirtualHost *:443>
+	ServerName www.nimbly.be
+	SSLEngine On
+	DocumentRoot /var/www/nimbly
+	Options -Indexes
+</VirtualHost>

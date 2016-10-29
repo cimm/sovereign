@@ -1,0 +1,13 @@
+- name: Copy Nimbly site to server
+  copy: src={{ nimbly_site_dir }} dest=/var/www/nimbly owner=root group=www-data mode=0644
+
+- name: Configure Apache
+  template: src=etc_apache2_sites-available_nimbly.j2 dest=/etc/apache2/sites-available/nimbly.conf group=root owner=root
+
+- name: Symlink Apache config
+  file: src=/etc/apache2/sites-available/nimbly.conf dest=/etc/apache2/sites-enabled/nimbly.conf state=link
+  notify: restart apache
+
+- name: Disable default Apache site
+  command: a2dissite 000-default removes=/etc/apache2/sites-enabled/000-default.conf
+  notify: restart apache
