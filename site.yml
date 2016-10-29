@@ -9,16 +9,16 @@
   roles:
     - common
     - mailserver
-    - webmail
-    - blog
-    - ircbouncer
-    - xmpp
-    - owncloud
-    - vpn
+    #- webmail
+    #- blog
+    #- ircbouncer
+    #- xmpp
+    #- owncloud
+    #- vpn
     - tarsnap
-    - news
-    - git
-    - readlater
-    - monitoring  # Monitoring role should be last. See roles/monitoring/README.md
+    #- news
+    #- git
+    #- readlater
+    #- monitoring  # Monitoring role should be last. See roles/monitoring/README.md
     - suffix
     - nimbly
