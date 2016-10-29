@@ -1,0 +1,16 @@
+- name: Copy Suffix site to server
+  copy: src={{ suffix_site_dir }} dest=/var/www/suffix owner=root group=www-data mode=0644
+
+- name: Add mod_rewrite module for Apache
+  apache2_module: state=present name=rewrite
+
+- name: Configure Apache
+  template: src=etc_apache2_sites-available_suffix.j2 dest=/etc/apache2/sites-available/suffix.conf group=root owner=root
+
+- name: Symlink Apache config
+  file: src=/etc/apache2/sites-available/suffix.conf dest=/etc/apache2/sites-enabled/suffix.conf state=link
+  notify: restart apache
+
+- name: Disable default Apache site
+  command: a2dissite 000-default removes=/etc/apache2/sites-enabled/000-default.conf
+  notify: restart apache

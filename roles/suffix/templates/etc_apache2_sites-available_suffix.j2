@@ -1,0 +1,22 @@
+ServerSignature Off
+ServerTokens Prod
+
+<VirtualHost *:80>
+	ServerName suffix.be
+	Redirect temp / https://www.suffix.be/
+</VirtualHost>
+
+<VirtualHost *:80>
+	ServerName www.suffix.be
+	Redirect temp / https://www.suffix.be/
+</VirtualHost>
+
+<VirtualHost *:443>
+	ServerName www.suffix.be
+	SSLEngine On
+	DocumentRoot /var/www/suffix
+	Options -Indexes
+	<Directory "/var/www/suffix">
+		AllowOverride All
+	</Directory>
+</VirtualHost>
