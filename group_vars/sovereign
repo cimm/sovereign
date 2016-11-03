@@ -66,3 +66,9 @@ suffix_site_dir: # (required)
 # nimbly
 nimbly_site_dir: # (required)
 # If path ends with "/", only inside contents of that directory are copied to destination. Otherwise, if it does not end with "/", the directory itself with all contents is copied.
+
+# baikal
+baikal_db: baikal
+baikal_version: 0.4.6
+baikal_db_user: baikal
+baikal_db_user_password: # (required)
